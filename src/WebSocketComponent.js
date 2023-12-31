@@ -1,7 +1,8 @@
 import React from "react";
-import {v4 as uuidv4} from 'uuid';
 
-const WebSocketComponent = () => {
+
+const WebSocketComponent = (props) => {
+    const {userId} = props
     const [socket, setSocket] = React.useState(null);
     const [message, setMessage] = React.useState('');
     const [messages, setMessages] = React.useState([]);
@@ -30,7 +31,7 @@ const WebSocketComponent = () => {
     const sendMessage = () => {
         if (socket && message.trim() !== ''){
             const newMsg = {
-                id: uuidv4(),
+                id: userId,
                 data: message,
             }
 
