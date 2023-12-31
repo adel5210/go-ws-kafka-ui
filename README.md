@@ -6,3 +6,5 @@
 - docker images
 - docker tag go-ws-kafka-ui adel5210/go-ws-kafka-ui:1.0.0
 - docker push adel5210/go-ws-kafka-ui:1.0.0
+### Kube setup attempt 1
+- kubectl apply -f k8s/deployment.yaml 
