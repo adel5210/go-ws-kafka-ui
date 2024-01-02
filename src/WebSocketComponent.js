@@ -8,8 +8,8 @@ const WebSocketComponent = (props) => {
     const [messages, setMessages] = React.useState([]);
 
     React.useEffect(() => {
-        // const newSocket = new WebSocket('ws://localhost:8090/ws')
-        const newSocket = new WebSocket('ws://192.168.49.2:32276/ws')
+        const newSocket = new WebSocket('ws://0.0.0.0:8090/ws')
+        // const newSocket = new WebSocket('ws://192.168.49.2:32276/ws')
 
         newSocket.addEventListener('open', (event) => {
             console.log('WS connection opened')
