@@ -1,5 +1,5 @@
 import React from "react";
-
+import socketIOClient from 'socket.io-client';
 
 const WebSocketComponent = (props) => {
     const {userId} = props
@@ -8,24 +8,16 @@ const WebSocketComponent = (props) => {
     const [messages, setMessages] = React.useState([]);
 
     React.useEffect(() => {
-        const newSocket = new WebSocket('ws://go-ws-kafka-service:8090/ws')
+        const newSocket = socketIOClient('ws://go-ws-kafka-service:8090/ws')
 
-        newSocket.addEventListener('open', (event) => {
-            console.log('WS connection opened')
-        })
-
-        newSocket.addEventListener('message', (event)=> {
+        newSocket.on('message', (event)=> {
             const receivedMsg = JSON.parse(event.data)
             setMessages((prvMessages) => [...prvMessages, receivedMsg])
         })
 
-        newSocket.addEventListener('close', (event) => {
-            console.log('WS connection closed')
-        })
-
         setSocket(newSocket)
 
-        return () => newSocket.close()
+        return () => newSocket.disconnect()
     }, [])
 
     const sendMessage = () => {
