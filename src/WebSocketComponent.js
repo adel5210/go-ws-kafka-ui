@@ -9,7 +9,7 @@ const WebSocketComponent = (props) => {
 
     React.useEffect(() => {
         // const newSocket = socketIOClient('ws://go-ws-kafka-service:8090/ws')
-        const newSocket = socketIOClient('ws://192.168.49.2:31000/ws')
+        const newSocket = socketIOClient('ws://192.168.49.2:8090/ws') //minikube ip
 
         newSocket.on('message', (event)=> {
             const receivedMsg = JSON.parse(event.data)
