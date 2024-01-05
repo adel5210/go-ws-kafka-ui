@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: go-ws-kafka-ui
-          image: adel5210/go-ws-kafka-ui:1.0.2
+          image: adel5210/go-ws-kafka-ui:1.0.3
           ports:
-            - containerPort: 3000
+            - containerPort: 80
           imagePullPolicy: Always
